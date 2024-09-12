@@ -27,12 +27,15 @@ function App({ store }) {
                 onClick={() => store.selectItem(item.code)}
               >
                 <div className="Item-code">{item.code}</div>
-                <div className="Item-title">{item.title}</div>
-                {item.selectionCount > 0 && (
+                <div className="Item-title">
+                  {item.title} 
+                  {item.selectionCount > 0 && ` | Выделяли ${item.selectionCount} раз`}
+                </div>
+                {/* {item.selectionCount > 0 && (
                   <div className="Item-selectionCount">
                     Выделяли {item.selectionCount} раз
                   </div>
-                )}
+                )} */}
                 <div className="Item-actions">
                   <button onClick={(e) => {
                     e.stopPropagation();
