@@ -2,6 +2,26 @@ import React from 'react';
 // import { createElement } from './utils.js';
 import './styles.css';
 
+// Функция для правильной формы слова "раз"
+function getSelectionText(count) {
+  const lastDigit = count % 10;
+  const lastTwoDigits = count % 100;
+
+  if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+    return 'раз';
+  }
+
+  if (lastDigit === 1) {
+    return 'раз';
+  }
+
+  if (lastDigit >= 2 && lastDigit <= 4) {
+    return 'раза';
+  }
+
+  return 'раз';
+}
+
 /**
  * Приложение
  * @param store {Store} Состояние приложения
@@ -29,7 +49,7 @@ function App({ store }) {
                 <div className="Item-code">{item.code}</div>
                 <div className="Item-title">
                   {item.title} 
-                  {item.selectionCount > 0 && ` | Выделяли ${item.selectionCount} раз`}
+                  {item.selectionCount > 0 && ` | Выделяли ${item.selectionCount} ${getSelectionText(item.selectionCount)}`}
                 </div>
                 {/* {item.selectionCount > 0 && (
                   <div className="Item-selectionCount">
